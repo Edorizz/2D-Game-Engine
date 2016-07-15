@@ -1,7 +1,7 @@
 #pragma once
 
-#include "src/graphics/Window.h"
-#include "src/graphics/ShaderProgram.h"
-#include "src/graphics/Renderable2D.h"
-#include "src/graphics/Renderer2D.h"
-#include "src/graphics/Sprite.h"
+#include "Core/graphics/Window.h"
+#include "Core/graphics/ShaderProgram.h"
+#include "Core/graphics/Renderable2D.h"
+#include "Core/graphics/Renderer2D.h"
+#include "Core/graphics/Sprite.h"
