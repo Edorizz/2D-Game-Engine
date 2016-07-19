@@ -6,19 +6,15 @@
 #include <fstream>
 #include <iostream>
 
-namespace Sphinx {
-
-	class ShaderProgram {
-	private:
-		GLuint m_ShaderProgram;
-	public:
-		ShaderProgram(std::string vertexPath, std::string fragmentPath);
-		~ShaderProgram();
-		void Use();
-		void Unuse();
-		GLuint GetID() { return m_ShaderProgram; }
-	private:
-		GLuint CompileShader(std::string shaderPath, GLenum shaderType);
-	};
-
-}
+class ShaderProgram {
+private:
+	GLuint m_ShaderProgram;
+public:
+	ShaderProgram(std::string vertexPath, std::string fragmentPath);
+	~ShaderProgram();
+	void Use();
+	void Unuse();
+	GLuint GetID() { return m_ShaderProgram; }
+private:
+	GLuint CompileShader(std::string shaderPath, GLenum shaderType);
+};

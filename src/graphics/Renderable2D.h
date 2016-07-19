@@ -1,14 +1,16 @@
 #pragma once
 
 class Renderer2D;
+#include <GLM/glm.hpp>
 
-namespace Sphinx {
+struct Vertex {
+	glm::vec3 position;
+	glm::vec4 color;
+};
 
-	class Renderable2D {
-	public:
-		virtual void Sumbit(Renderer2D) = 0;
-	protected:
-		Renderable2D() {}
-	};
-
-}
+class Renderable2D {
+public:
+	virtual void Submit(Renderer2D *renderer) {};
+protected:
+	Renderable2D() {}
+};
