@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Renderable2D.h"
-#include <GLM/glm.hpp>
 #include <vector>
 
 class Group : public Renderable2D {

@@ -1,8 +1,5 @@
 #pragma once
 
-#include <GLM/gtc/matrix_transform.hpp>
-#include <GLM/gtc/type_ptr.hpp>
-
 #include "src/graphics/Sprite.h"
 #include "src/graphics/Window.h"
 #include "src/graphics/ShaderProgram.h"

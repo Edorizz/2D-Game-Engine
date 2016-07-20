@@ -14,10 +14,10 @@ mat4 mat4::Void() {
 	return mat;
 }
 
-//	| 1 0 0 0 |
-//	| 0 1 0 0 |
-//	| 0 0 1 0 |
-//	| 0 0 0 1 |
+/*	| 1 0 0 0 |
+	| 0 1 0 0 |
+	| 0 0 1 0 |
+	| 0 0 0 1 |	*/
 mat4 mat4::Identity() {
 	mat4 mat = mat4::Void();
 
@@ -30,11 +30,11 @@ mat4 mat4::Identity() {
 }
 
 
-//	| 1 0 0 x |
-//	| 0 1 0 y |
-//	| 0 0 1 z |
-//	| 0 0 0 1 |
-mat4 mat4::Translate(vec3 vector) {
+/*	| 1 0 0 x |
+	| 0 1 0 y |
+	| 0 0 1 z |
+	| 0 0 0 1 |	*/
+mat4 mat4::Translate(const vec3 &vector) {
 	mat4 mat = mat4::Identity();
 
 	mat.data[3][0] = vector.x;
@@ -44,11 +44,12 @@ mat4 mat4::Translate(vec3 vector) {
 	return mat;
 }
 
-//	| x^2(1-c) + c   xy(1-c) - zs   xz(1-c) + ys   0 |
-//	| xy(1-c) + zs   y^2(1-c) + c   yz(1-c) - xs   0 |
-//	| xz(1-c) - ys   yz(1-c) + xs   z^2(1-c) + c   0 |
-//	|      0              0             0          1 |
-mat4 mat4::Rotate(float angle, vec3 vector) {
+//TODO: Normalize the rotation vector before using it
+/*	| x^2(1-c) + c   xy(1-c) - zs   xz(1-c) + ys   0 |
+	| xy(1-c) + zs   y^2(1-c) + c   yz(1-c) - xs   0 |
+	| xz(1-c) - ys   yz(1-c) + xs   z^2(1-c) + c   0 |
+	|      0              0             0          1 |	*/
+mat4 mat4::Rotate(float angle, const vec3 &vector) {
 	//! This can be replaced by "mat.data[3][3] = 1.0f"
 	mat4 mat = mat4::Void();
 	float s = sin(angle);
@@ -67,11 +68,27 @@ mat4 mat4::Rotate(float angle, vec3 vector) {
 	return mat;
 }
 
-mat4& operator*(mat4 left, mat4 right) {
-	return left;
+//TODO: Memory issue? Only on debug mode and taking left as a reference 
+mat4 operator*(mat4 &left, mat4 &right) {
+	mat4 mat;
+	memset(&mat.data[0][0], 0, sizeof(mat.data[0][0]) * 4 * 4);
+
+	float sum = 0;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			for (int k = 0; k < 4; k++) {
+				sum += left.data[k][i] * right.data[j][k];
+			}
+			mat.data[j][i] = sum;
+			sum = 0;
+		}
+	}
+
+	return mat;
 }
 
-vec3& operator*(mat4 matrix, vec3 vector) {
+//TODO: For loop maybe?
+vec3 operator*(mat4 &matrix, const vec3 &vector) {
 	vec3 v(0.0f, 0.0f, 0.0f);
 	float x = vector.x;
 	float y = vector.y;

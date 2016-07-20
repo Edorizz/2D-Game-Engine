@@ -24,13 +24,17 @@ void Window::Init() {
 			std::cout << "Failed to create GLContext! SDL_Error: " << SDL_GetError() << std::endl;
 		} else {
 			glewInit();
-			SDL_GL_SetSwapInterval(0);
+			SDL_GL_SetSwapInterval(1);
 		}
 	}
 }
 
 GLboolean Window::ShouldClose() {
 	return m_ShouldClose;
+}
+
+void Window::Clear() {
+	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 //TODO MAKE YOUR OWN INPUT MANAGER CLASS!
@@ -44,6 +48,8 @@ void Window::HandleInput() {
 			keys[e.key.keysym.scancode] = false;
 		case SDL_QUIT:
 			m_ShouldClose = true;
+			if (e.key.keysym.scancode == SDL_SCANCODE_TAB)
+				m_ShouldClose = false;
 		default:
 			break;
 		}

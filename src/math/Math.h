@@ -5,3 +5,5 @@
 #include "vectors/vec4.h"
 
 #include "matrices/mat4.h"
+
+#include "Math_func.h"

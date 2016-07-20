@@ -2,7 +2,6 @@
 
 #include <deque>
 #include <GL/glew.h>
-#include <GLM/glm.hpp>
 #include "ShaderProgram.h"
 #include "../math/Math.h"
 

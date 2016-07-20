@@ -20,6 +20,7 @@ public:
 	Window(std::string title, GLuint width, GLuint height);
 	~Window();
 	GLboolean ShouldClose();
+	void Clear();
 	void HandleInput();
 	void Swap();
 private:
