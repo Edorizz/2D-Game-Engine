@@ -1,6 +1,6 @@
 #include "ShaderProgram.h"
 
-ShaderProgram::ShaderProgram(std::string vertexPath, std::string fragmentPath) {
+ShaderProgram::ShaderProgram(std::string &vertexPath, std::string &fragmentPath) {
 	GLuint vertexShader = CompileShader(vertexPath, GL_VERTEX_SHADER);
 	GLuint fragmentShader = CompileShader(fragmentPath, GL_FRAGMENT_SHADER);
 
@@ -25,7 +25,7 @@ void ShaderProgram::Unuse() {
 	glUseProgram(0);
 }
 
-GLuint ShaderProgram::CompileShader(std::string shaderPath, GLenum shaderType) {
+GLuint ShaderProgram::CompileShader(std::string &shaderPath, GLenum shaderType) {
 	std::ifstream file(shaderPath.c_str());
 	if (file.fail())
 		std::cout << "Failed to open " + shaderPath + '\n';

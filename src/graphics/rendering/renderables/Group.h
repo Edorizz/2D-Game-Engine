@@ -8,8 +8,8 @@ private:
 	mat4 m_TransformationMatrix;
 	std::vector<Renderable2D*>m_Renderables;
 public:
-	Group(mat4 transform);
-	void Init(mat4 transform);
+	Group(mat4 &transform);
+	void Init(mat4 &transform);
 	void Add(Renderable2D *renderable);
 	void Submit(Renderer2D *renderer);
 };

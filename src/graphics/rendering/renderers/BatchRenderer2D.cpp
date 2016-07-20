@@ -46,7 +46,6 @@ void BatchRenderer2D::Begin() {
 	m_Buffer = (Vertex*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 }
 
-//! OPTIMIZE THIS!
 void BatchRenderer2D::Submit(Sprite *renderable) {
 	const vec3 &position = renderable->GetPosition();
 	const vec2 &size = renderable->GetSize();
