@@ -6,4 +6,4 @@
 
 #include "matrices/mat4.h"
 
-#include "Math_func.h"
+#include "functions/Math_func.h"

@@ -1,7 +1,8 @@
 #pragma once
 
+#include "../../../math/Math.h"
+
 class Renderer2D;
-#include "../math/Math.h"
 
 struct Vertex {
 	vec3 position;

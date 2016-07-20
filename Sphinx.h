@@ -1,11 +1,11 @@
 #pragma once
 
-#include "src/graphics/Sprite.h"
-#include "src/graphics/Window.h"
-#include "src/graphics/ShaderProgram.h"
-#include "src/graphics/BatchRenderer2D.h"
-#include "src/graphics/Renderable2D.h"
-#include "src/graphics/Group.h"
+#include "src/graphics/rendering/renderables/Sprite.h"
+#include "src/graphics/window/Window.h"
+#include "src/graphics/shaders/ShaderProgram.h"
+#include "src/graphics/rendering/renderers/BatchRenderer2D.h"
+#include "src/graphics/rendering/renderables/Renderable2D.h"
+#include "src/graphics/rendering/renderables/Group.h"
 
 #include "src/math/Math.h"
 

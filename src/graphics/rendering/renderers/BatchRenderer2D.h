@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Renderer2D.h"
-#include "Sprite.h"
+#include "../renderables/Sprite.h"
 
 #define RENDERER_MAX_SPRITES		10000
 #define RENDERER_VERTEX_SIZE		sizeof(Vertex)

@@ -2,8 +2,8 @@
 
 #include <deque>
 #include <GL/glew.h>
-#include "ShaderProgram.h"
-#include "../math/Math.h"
+#include "../../shaders/ShaderProgram.h"
+#include "../../../math/Math.h"
 
 class Sprite;
 
