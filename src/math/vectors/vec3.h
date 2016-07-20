@@ -2,6 +2,8 @@
 
 #include <ostream>
 
+class mat4;
+
 class vec3 {
 public:
 	float x, y, z;
@@ -18,6 +20,8 @@ public:
 	friend vec3& operator*(vec3 vector, float scalar);
 	friend vec3& operator/(vec3 vector, float scalar);
 	friend std::ostream& operator<<(std::ostream& stream, vec3 vector);
+
+	friend vec3& operator*(mat4 matrix, vec3 vector);
 
 	vec3& operator+=(const vec3& other);
 	vec3& operator-=(const vec3& other);

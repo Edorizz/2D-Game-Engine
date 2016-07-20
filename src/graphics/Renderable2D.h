@@ -1,11 +1,11 @@
 #pragma once
 
 class Renderer2D;
-#include <GLM/glm.hpp>
+#include "../math/Math.h"
 
 struct Vertex {
-	glm::vec3 position;
-	glm::vec4 color;
+	vec3 position;
+	vec4 color;
 };
 
 class Renderable2D {

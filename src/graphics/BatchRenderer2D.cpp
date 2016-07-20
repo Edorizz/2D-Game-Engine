@@ -48,23 +48,23 @@ void BatchRenderer2D::Begin() {
 
 //! OPTIMIZE THIS!
 void BatchRenderer2D::Submit(Sprite *renderable) {
-	const glm::vec3 &position = renderable->GetPosition();
-	const glm::vec2 &size = renderable->GetSize();
-	const glm::vec4 &color = renderable->GetColor();
+	const vec3 &position = renderable->GetPosition();
+	const vec2 &size = renderable->GetSize();
+	const vec4 &color = renderable->GetColor();
 
-	m_Buffer->position = glm::vec3(*m_TransformationBack * glm::vec4(position, 1.0f));
+	m_Buffer->position = *m_TransformationBack * position;
 	m_Buffer->color = color;
 	m_Buffer++;
 
-	m_Buffer->position = glm::vec3(*m_TransformationBack * glm::vec4(position.x, position.y + size.y, position.z, 1.0f));
+	m_Buffer->position = *m_TransformationBack * vec3(position.x, position.y + size.y, position.z);
 	m_Buffer->color = color;
 	m_Buffer++;
 
-	m_Buffer->position = glm::vec3(*m_TransformationBack * glm::vec4(position.x + size.x, position.y + size.y, position.z, 1.0f));
+	m_Buffer->position = *m_TransformationBack * vec3(position.x + size.x, position.y + size.y, position.z);
 	m_Buffer->color = color;
 	m_Buffer++;
 
-	m_Buffer->position = glm::vec3(*m_TransformationBack * glm::vec4(position.x + size.x, position.y, position.z, 1.0f));
+	m_Buffer->position = *m_TransformationBack * vec3(position.x + size.x, position.y, position.z);
 	m_Buffer->color = color;
 	m_Buffer++;
 }

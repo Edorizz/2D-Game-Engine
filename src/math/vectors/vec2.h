@@ -3,7 +3,7 @@
 #include <ostream>
 
 class vec2 {
-private:
+public:
 	float x, y;
 public:
 	vec2(float x, float y);

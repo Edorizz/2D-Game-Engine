@@ -1,7 +1,7 @@
 #include "Renderer2D.h"
 #include "Sprite.h"
 
-void Renderer2D::Push_Stack(glm::mat4 &transform) {
+void Renderer2D::Push_Stack(mat4 &transform) {
 	m_TransformationStack.push_back(transform);
 	m_TransformationBack = &transform;
 }
