@@ -6,6 +6,8 @@
 #include "src/graphics/rendering/renderers/BatchRenderer2D.h"
 #include "src/graphics/rendering/renderables/Renderable2D.h"
 #include "src/graphics/rendering/renderables/Group.h"
+#include "src/graphics/rendering/layers/Layer.h"
+#include "src/graphics/rendering/layers/SceneLayer2D.h"
 
 #include "src/math/Math.h"
 

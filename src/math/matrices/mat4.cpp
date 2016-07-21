@@ -52,13 +52,14 @@ mat4 mat4::Translate(const vec3 &vector) {
 mat4 mat4::Rotate(float angle, const vec3 &vector) {
 	//! This can be replaced by "mat.data[3][3] = 1.0f"
 	mat4 mat = mat4::Void();
+	float mag = sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z);
 	float s = sin(angle);
 	float c = cos(angle);
 	float omc = 1 - c;
 
-	float x = vector.x;
-	float y = vector.y;
-	float z = vector.z;
+	float x = vector.x / mag;
+	float y = vector.y / mag;
+	float z = vector.z / mag;
 
 	mat.data[0][0] = x * x * omc + c;		mat.data[1][0] = x * y * omc - z * s;		mat.data[2][0] = x * z * omc + y * s;
 	mat.data[0][1] = x * y * omc + z * s;	mat.data[1][1] = y * y * omc + c;			mat.data[2][1] = y * z * omc - x * s;

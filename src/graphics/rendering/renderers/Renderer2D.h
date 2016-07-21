@@ -13,7 +13,7 @@ protected:
 	std::vector<mat4>m_TransformationStack;
 	mat4 *m_TransformationBack;
 protected:
-	Renderer2D() {}
+	Renderer2D() {};
 public:
 	virtual void Init() = 0;
 	void Push_Stack(mat4 &transform);
