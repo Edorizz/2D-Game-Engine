@@ -4,9 +4,10 @@
 #include "../renderers/BatchRenderer2D.h"
 
 class SceneLayer2D : public Layer {
-private:
+public:
 	BatchRenderer2D m_Renderer;
 public:
+	SceneLayer2D(std::string *shaders);
 	void Draw();
 	void Add(Renderable2D *renderable);
 };

@@ -1,6 +1,6 @@
 #include "ShaderProgram.h"
 
-ShaderProgram::ShaderProgram(std::string &vertexPath, std::string &fragmentPath) {
+ShaderProgram::ShaderProgram(std::string &vertexPath, std::string &fragmentPath) : m_Enabled(false) {
 	GLuint vertexShader = CompileShader(vertexPath, GL_VERTEX_SHADER);
 	GLuint fragmentShader = CompileShader(fragmentPath, GL_FRAGMENT_SHADER);
 
@@ -19,10 +19,32 @@ ShaderProgram::~ShaderProgram() {
 
 void ShaderProgram::Use() {
 	glUseProgram(m_ShaderProgram);
+	m_Enabled = true;
 }
 
 void ShaderProgram::Unuse() {
 	glUseProgram(0);
+	m_Enabled = false;
+}
+
+void ShaderProgram::Uniform3f(std::string name, vec3 vector, GLboolean disableAfterUse) {
+	if (!m_Enabled)
+		Use();
+	glUniform3f(GetUniformLocation(name), vector.x, vector.y, vector.z);
+	if (disableAfterUse)
+		Unuse();
+}
+
+void ShaderProgram::Uniform2f(std::string name, vec2 vector, GLboolean disableAfterUse) {
+	if (!m_Enabled)
+		Use();
+	glUniform2f(GetUniformLocation(name), vector.x, vector.y);
+	if (disableAfterUse)
+		Unuse();
+}
+
+GLint ShaderProgram::GetUniformLocation(std::string name) {
+	return glGetUniformLocation(m_ShaderProgram, name.c_str());
 }
 
 GLuint ShaderProgram::CompileShader(std::string &shaderPath, GLenum shaderType) {

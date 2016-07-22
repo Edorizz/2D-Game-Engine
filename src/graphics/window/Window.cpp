@@ -1,7 +1,7 @@
 #include "Window.h"
 
 Window::Window(std::string title, GLuint width, GLuint height)
-	: m_Title(title), m_ScreenWidth(width), m_ScreenHeight(height), m_ShouldClose(false) {
+	: m_Title(title), m_ScreenWidth(width), m_ScreenHeight(height), m_ShouldClose(false), m_MousePosX(0), m_MousePosY(0){
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		std::cout << "Failed to initialize SDL! SDL_Error: " << SDL_GetError() << std::endl;
 	} else {
@@ -44,13 +44,15 @@ void Window::HandleInput() {
 		switch (e.type) {
 		case SDL_KEYDOWN:
 			keys[e.key.keysym.scancode] = true;
+			break;
 		case SDL_KEYUP:
 			keys[e.key.keysym.scancode] = false;
+			break;
 		case SDL_QUIT:
 			m_ShouldClose = true;
-			if (e.key.keysym.scancode == SDL_SCANCODE_TAB)
-				m_ShouldClose = false;
-		default:
+			break;
+		case SDL_MOUSEMOTION:
+			SDL_GetMouseState(&m_MousePosX, &m_MousePosY);
 			break;
 		}
 	}
@@ -61,4 +63,9 @@ void Window::HandleInput() {
 
 void Window::Swap() {
 	SDL_GL_SwapWindow(m_Window);
+}
+
+void Window::GetMousePos(vec2 *vector) {
+	vector->x = m_MousePosX;
+	vector->y = m_MousePosY;
 }

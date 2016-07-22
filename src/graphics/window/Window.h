@@ -5,6 +5,7 @@
 #include <SDL/SDL.h>
 #include <string>
 #include <iostream>
+#include "../../math/Math.h"
 
 #define MAX_KEYS 1024
 
@@ -16,6 +17,7 @@ private:
 	std::string m_Title;
 	GLboolean m_ShouldClose;
 	GLboolean keys[MAX_KEYS];
+	GLint m_MousePosX, m_MousePosY;
 public:
 	Window(std::string title, GLuint width, GLuint height);
 	~Window();
@@ -23,6 +25,7 @@ public:
 	void Clear();
 	void HandleInput();
 	void Swap();
+	void GetMousePos(vec2 *vector);
 private:
 	void Init();
 };
