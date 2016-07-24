@@ -51,7 +51,7 @@ mat4 mat4::Translate(const vec3 &vector) {
 	|      0              0             0          1 |	*/
 mat4 mat4::Rotate(float angle, const vec3 &vector) {
 	//! This can be replaced by "mat.data[3][3] = 1.0f"
-	mat4 mat = mat4::Void();
+	mat4 mat = mat4::Void(); //! Isn't this supposed to be mat::Identity()?, just sayin
 	float mag = sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z);
 	float s = sin(angle);
 	float c = cos(angle);
@@ -69,7 +69,21 @@ mat4 mat4::Rotate(float angle, const vec3 &vector) {
 	return mat;
 }
 
-//TODO: Memory issue? Only on debug mode and taking left as a reference 
+mat4 mat4::Orthographic(float left, float right, float bottom, float top, float far, float near) {
+	mat4 mat = mat4::Identity();
+
+	mat.data[0][0] = 2 / (right - left);
+	mat.data[1][1] = 2 / (top - bottom);
+	mat.data[2][2] = -2 / (far - near);
+
+	mat.data[3][0] = -(right + left) / (right - left);
+	mat.data[3][1] = -(top + bottom) / (top - bottom);
+	mat.data[3][2] = -(far + near) / (far - near);
+
+	return mat;
+}
+
+//TODO: Memory issue? Only on debug mode and returning a reference
 mat4 operator*(mat4 &left, mat4 &right) {
 	mat4 mat;
 	memset(&mat.data[0][0], 0, sizeof(mat.data[0][0]) * 4 * 4);

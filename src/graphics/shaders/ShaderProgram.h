@@ -16,8 +16,9 @@ public:
 	~ShaderProgram();
 	void Use();
 	void Unuse();
-	void Uniform3f(std::string name, vec3 vector, GLboolean disableAfterUse);
-	void Uniform2f(std::string name, vec2 vector, GLboolean disableAfterUse);
+	void Uniform2f(std::string name, vec2 vector, GLboolean disableAfterUse = false);
+	void Uniform3f(std::string name, vec3 vector, GLboolean disableAfterUse = false);
+	void UniformMat4(std::string name, GLuint count, GLboolean transpose, const GLfloat *matrixData, GLboolean disableAfterUse = false);
 	GLuint GetID() { return m_ShaderProgram; }
 private:
 	GLint GetUniformLocation(std::string name);

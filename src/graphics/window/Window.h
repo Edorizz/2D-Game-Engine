@@ -26,6 +26,8 @@ public:
 	void HandleInput();
 	void Swap();
 	void GetMousePos(vec2 *vector);
+	// TODO: Add IsKeyDown and IsKeyUp
+	GLboolean IsKeyPressed(GLint key);
 private:
 	void Init();
 };

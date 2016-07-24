@@ -27,6 +27,14 @@ void ShaderProgram::Unuse() {
 	m_Enabled = false;
 }
 
+void ShaderProgram::Uniform2f(std::string name, vec2 vector, GLboolean disableAfterUse) {
+	if (!m_Enabled)
+		Use();
+	glUniform2f(GetUniformLocation(name), vector.x, vector.y);
+	if (disableAfterUse)
+		Unuse();
+}
+
 void ShaderProgram::Uniform3f(std::string name, vec3 vector, GLboolean disableAfterUse) {
 	if (!m_Enabled)
 		Use();
@@ -35,10 +43,10 @@ void ShaderProgram::Uniform3f(std::string name, vec3 vector, GLboolean disableAf
 		Unuse();
 }
 
-void ShaderProgram::Uniform2f(std::string name, vec2 vector, GLboolean disableAfterUse) {
+void ShaderProgram::UniformMat4(std::string name, GLuint count, GLboolean transpose, const GLfloat *matrixData, GLboolean disableAfterUse) {
 	if (!m_Enabled)
 		Use();
-	glUniform2f(GetUniformLocation(name), vector.x, vector.y);
+	glUniformMatrix4fv(GetUniformLocation(name), count, transpose, matrixData);
 	if (disableAfterUse)
 		Unuse();
 }

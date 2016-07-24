@@ -69,3 +69,7 @@ void Window::GetMousePos(vec2 *vector) {
 	vector->x = m_MousePosX;
 	vector->y = m_MousePosY;
 }
+
+GLboolean Window::IsKeyPressed(GLint key) {
+	return keys[key];
+}

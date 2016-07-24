@@ -1,9 +1,6 @@
 #include "BatchRenderer2D.h"
 
 BatchRenderer2D::BatchRenderer2D() {
-	glGenVertexArrays(1, &vao);
-	glGenBuffers(1, &vbo);
-	glGenBuffers(1, &ibo);
 	Init();
 }
 
@@ -14,7 +11,9 @@ BatchRenderer2D::~BatchRenderer2D() {
 }
 
 void BatchRenderer2D::Init() {
+	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
+		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBufferData(GL_ARRAY_BUFFER, RENDERER_VERTEX_BUFFER_SIZE, nullptr, GL_DYNAMIC_DRAW);
 
@@ -37,6 +36,7 @@ void BatchRenderer2D::Init() {
 		indices[i + 5] = offset + 0;
 	}
 
+		glGenBuffers(1, &ibo);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	glBindVertexArray(0);
